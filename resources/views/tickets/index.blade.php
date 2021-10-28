@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="card border border-primary shadow-0 mt-5">
+        @include('shared.successAlert')
         <div class="card-header">Index of ticket</div>
         <div class="card-body">
             <h5 class="card-title">your comments</h5>
@@ -25,7 +26,6 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">BREAD|CRUD|SECI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,11 +41,6 @@
                                     <td>
                                     {!! link_to_route('tickets.show', $ticket->title, [$ticket->slug]) !!}</td>
                                     <td>{{ $ticket->status ? 'Pending' : 'Answered' }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-sm px-3">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </td>
                                 </tr>
                             @endforeach
 
@@ -60,7 +55,6 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">BREAD|CRUD|SECI</th>
                             </tr>
                         </tfoot>
                     </table>

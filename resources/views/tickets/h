@@ -1,0 +1,17 @@
+<!-- Title input -->
+            <div class="form-outline mb-4">
+                {!! Form::text('title', '', ['class' => 'form-control', 'id' => 'title.ticket', 'required']) !!}
+                {!! Form::label('title.ticket', 'Title', ['class' => 'form-label']) !!}
+            </div>
+
+
+            <!-- Content input -->
+            <div class="form-outline mb-4">
+                {!! Form::textarea('content', '', ['class' => 'form-control', 'id' => 'content.ticket', 'rows' => '4', 'required']) !!}
+                {!! Form::label('content.ticket', 'Content', ['class' => 'form-label']) !!}
+            </div>
+            <button class="btn btn-danger" type="reset">RESET</button>
+
+
+
+            {!! link_to_route('tickets.', 'Destroy', [], ['class' => 'btn btn-danger']) !!}

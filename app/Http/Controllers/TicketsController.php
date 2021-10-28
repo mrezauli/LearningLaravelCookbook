@@ -53,8 +53,7 @@ class TicketsController extends Controller
 
         $ticket->save();
 
-        return redirect('tickets/create')->with('success', 'Tickets has been created! Its link is: ' . $slug );
-
+        return redirect('tickets/create')->with('success', 'Tickets has been created! Its link is: ' . $slug);
     }
 
     /**
@@ -109,18 +108,20 @@ class TicketsController extends Controller
         $ticket->save();
 
         return redirect(action('App\Http\Controllers\TicketsController@edit', $ticket->slug))->with('success', 'Tickets has been updated! Its link is: ' . $slug);
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($slug)
     {
         //
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $ticket->delete();
 
-   }
+
+        return redirect('tickets')->with('success', 'The ticket ' . $slug . 'has been deleted!');
+    }
 }

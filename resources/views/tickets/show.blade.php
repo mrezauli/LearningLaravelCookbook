@@ -12,7 +12,10 @@
             <p><strong>Status:</strong>{{ $ticket->status ? 'Pending' : 'Answered' }}</p>
             <p>{{ $ticket->content }}</p>
             {!! link_to_route('tickets.edit', 'Edit', [$ticket->slug], ['class' => 'btn btn-info']) !!}
-            {!! link_to_route('tickets.destroy', 'Destroy', [$ticket->slug], ['class' => 'btn btn-danger']) !!}
+
+            {!! Form::model($tickets = null, ['route' => ['tickets.destroy', $ticket->slug], 'method' => 'delete']) !!}
+            {!! Form::submit('Destroy', ['class' => 'mt-3 btn btn-danger']) !!}
+            {!! Form::close() !!}
         </div>
     </div>
 

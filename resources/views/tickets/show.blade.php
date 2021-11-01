@@ -19,4 +19,7 @@
         </div>
     </div>
 
+    @include('comments.show')
+    @include('comments.create')
+
 @endsection

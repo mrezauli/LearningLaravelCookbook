@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateTicketRequest;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\CreateTicketRequest;
 
 class TicketsController extends Controller
 {
@@ -43,17 +43,24 @@ class TicketsController extends Controller
         //
         //return $request->all();
         $slug = uniqid();
-
         $ticket = new Ticket([
             'title' => $request->get('title'),
             'content' => $request->get('content'),
             'slug' => $slug,
             'user_id' => 1
         ]);
-
         $ticket->save();
 
-        return redirect('tickets/create')->with('success', 'Tickets has been created! Its link is: ' . $slug);
+        $data = [
+            'ticketsSlug' => $slug
+        ];
+        Mail::send('mails.ticket', $data, function ($message) {
+            $message->from('rezaul.nactar@gmail.com', 'MD. Rezaul Islam');
+            $message->to('rezaul.cse.mbstu@gmail.com', 'MD. Rezaul Islam');
+            $message->subject('Submission of a ticket!');
+        });
+
+        return redirect('tickets/create')->with('success', 'Tickets has been created! Its slug is: ' . $slug);
     }
 
     /**
@@ -66,7 +73,11 @@ class TicketsController extends Controller
     {
         //
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        return view('tickets.show')->with('ticket', $ticket);
+        $comments = $ticket->comments()->get();
+        return view('tickets.show')->with([
+            'ticket' => $ticket,
+            'comments' => $comments
+        ]);
     }
 
     /**

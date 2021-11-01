@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ticket extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['title', 'content', 'slug', 'status', 'user_id'];
 
@@ -19,5 +20,10 @@ class Ticket extends Model
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'post_id');
     }
 }

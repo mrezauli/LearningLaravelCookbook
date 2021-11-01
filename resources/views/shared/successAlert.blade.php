@@ -4,3 +4,8 @@
     </div>
 @endif
 
+@if (session('successOfComment'))
+    <div class="alert alert-success m-3" role="alert">
+        {{ session('successOfComment') }}
+    </div>
+@endif

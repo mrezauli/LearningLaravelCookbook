@@ -12,7 +12,8 @@ class Comment extends Model
 
     protected $guarded = ['id'];
 
-    public function ticket() {
-        return $this->belongsTo('App\MOdels\Ticket');
+    public function ticket()
+    {
+        return $this->belongsTo('App\Models\Ticket');
     }
 }

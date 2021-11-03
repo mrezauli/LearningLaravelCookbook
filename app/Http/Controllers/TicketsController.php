@@ -18,6 +18,7 @@ class TicketsController extends Controller
         //
 
         $tickets = Ticket::all();
+        dd($tickets);
         return view('tickets.index')->with('tickets', $tickets);
     }
 

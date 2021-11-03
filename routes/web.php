@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,33 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('closure', function () {
-    return 'this is by closure returned!';
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('welcome', 'App\Http\Controllers\WelcomesController@index');
-
-Route::get('home', 'App\Http\Controllers\PagesController@home');
-Route::get('about', 'App\Http\Controllers\PagesController@about');
-Route::get('contact', 'App\Http\Controllers\PagesController@contact');
-
-Route::resource('tickets', App\Http\Controllers\TicketsController::class);
-
-Route::get('mailto', function () {
-    $data = [
-        'name' => 'Learning Laravel Cookbook Incorporate, NACTAR, Bogura'
-    ];
-
-    Mail::send('mails.welcome', $data, function ($message) {
-        $message->from('rezaul.nactar@gmail.com', 'MD. Rezaul Islam');
-
-        $message->to('rezaul.cse.mbstu@gmail.com', 'MD. Rezaul Islam');
-
-        $message->subject('Learning Laravel Cookbook: Hello Mail!');
-    });
-
-    return 'Your message has sent successfully!';
-
-});
-
-Route::resource('comments', App\Http\Controllers\CommentsController::class);
+require __DIR__.'/auth.php';

@@ -17,8 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//route get with laravel breeze
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+//modified for our demand
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', 'App\Http\Controllers\BoardsController@index')->name('dashboard');
+    Route::get('/boards/show', 'App\Http\Controllers\BoardsController@show');
+});
+
+require __DIR__ . '/auth.php';

@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('home', 'App\Http\Controllers\PagesController@home');
+Route::get('about', 'App\Http\Controllers\PagesController@about');
+Route::get('contact', 'App\Http\Controllers\PagesController@contact');
+Route::get('welcome', 'App\Http\Controllers\WelcomesController@index');
+
+Route::resource('tickets', 'App\Http\Controllers\TicketsController');
+
 //route get with laravel breeze
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

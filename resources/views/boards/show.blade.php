@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard of ') }}
+            {{ __('Dashboard of ' . Auth::user()->name) }}
         </h2>
     </x-slot>
 
@@ -11,9 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in as User!
                     <br>
-                    Your name is {{ Auth::user()->name() }}
+                    Your name is {{ Auth::user()->name }}
                     <br>
-                    Your email is {{ Auth::user()->email() }}
+                    Your email is {{ Auth::user()->email }}
                 </div>
             </div>
         </div>

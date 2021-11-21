@@ -23,6 +23,7 @@ Route::get('contact', 'App\Http\Controllers\PagesController@contact');
 Route::get('welcome', 'App\Http\Controllers\WelcomesController@index');
 
 Route::resource('tickets', 'App\Http\Controllers\TicketsController');
+Route::resource('comments', 'App\Http\Controllers\CommentsController');
 
 //route get with laravel breeze
 // Route::get('/dashboard', function () {
@@ -30,9 +31,16 @@ Route::resource('tickets', 'App\Http\Controllers\TicketsController');
 // })->middleware(['auth'])->name('dashboard');
 
 //modified for our demand
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', 'App\Http\Controllers\BoardsController@index')->name('dashboard');
-    Route::get('/boards/show', 'App\Http\Controllers\BoardsController@show');
+//works for anyone
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', 'App\Http\Controllers\BoardsController@index')->name('dashboard');
 });
+
+//works only for user
+Route::group(['middleware' => ['auth', 'role:user']], function () {
+    Route::get('boards/show', 'App\Http\Controllers\BoardsController@show')->name('boards.show');
+});
+
+
 
 require __DIR__ . '/auth.php';

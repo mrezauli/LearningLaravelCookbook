@@ -22,8 +22,8 @@ Route::get('about', 'App\Http\Controllers\PagesController@about');
 Route::get('contact', 'App\Http\Controllers\PagesController@contact');
 Route::get('welcome', 'App\Http\Controllers\WelcomesController@index');
 
-Route::resource('tickets', 'App\Http\Controllers\TicketsController');
-Route::resource('comments', 'App\Http\Controllers\CommentsController');
+Route::resource('tickets', App\Http\Controllers\TicketsController::class);
+Route::resource('comments', App\Http\Controllers\CommentsController::class);
 
 //route get with laravel breeze
 // Route::get('/dashboard', function () {
@@ -40,6 +40,12 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('boards/show', 'App\Http\Controllers\BoardsController@show')->name('boards.show');
 });
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'auth'], function() {
+    Route::resource('users', UsersController::class);
+});
+
 
 
 

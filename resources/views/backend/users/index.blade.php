@@ -5,11 +5,11 @@
 @section('content')
     <div class="card border border-primary shadow-0 mt-5">
         @include('shared.successAlert')
-        <div class="card-header">Index of ticket</div>
+        <div class="card-header">Index of user</div>
         <div class="card-body">
             <h5 class="card-title">your comments</h5>
-            @if ($tickets->isEmpty())
-                <p class="text-dark bg-danger text-center">there is no ticket</p>
+            @if ($users->isEmpty())
+                <p class="text-dark bg-danger text-center">there is no user</p>
             @else
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered border-info align-middle">
@@ -24,12 +24,13 @@
                                     </div>
                                 </th>
                                 <th scope="col">SL</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Joined At</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($tickets as $ticket)
+                            @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -37,10 +38,11 @@
                                                 id="flexCheckDefault" />
                                         </div>
                                     </th>
-                                    <th scope="row">{{ $ticket->id }}</th>
+                                    <th scope="row">{{ $user->id }}</th>
                                     <td>
-                                    {!! link_to_route('tickets.show', $ticket->title, [$ticket->slug]) !!}</td>
-                                    <td>{{ $ticket->status ? 'Pending' : 'Answered' }}</td>
+                                    {!! link_to_route('users.show', $user->name, [$user->slug]) !!}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->created_at }}</td>
                                 </tr>
                             @endforeach
 
@@ -52,9 +54,10 @@
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                                     </div>
                                 </th>
-                                <th scope="col">ID</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">SL</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Joined At</th>
                             </tr>
                         </tfoot>
                     </table>

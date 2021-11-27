@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Manager
 {
@@ -16,6 +17,11 @@ class Manager
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $user = Auth::user();
+        if ($user->hasRole('manager')) {
+            return $next($request);
+        } else {
+            return redirect('/');
+        }
     }
 }

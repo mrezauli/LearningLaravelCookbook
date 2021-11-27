@@ -279,7 +279,7 @@ return [
         | will be accessible from.
         |
         */
-        'path' => 'laratrust',
+        'path' => 'manager',
 
         /*
         |--------------------------------------------------------------------------
@@ -299,7 +299,7 @@ return [
         | These middleware will get attached onto each Laratrust panel route.
         |
         */
-        'middleware' => ['web'],
+        'middleware' => ['web', 'manager', 'auth'],
 
         /*
         |--------------------------------------------------------------------------

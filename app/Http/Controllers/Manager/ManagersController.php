@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manager;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class BoardsController extends Controller
+class ManagersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,6 @@ class BoardsController extends Controller
     public function index()
     {
         //
-        if (Auth::user()->hasRole('superadministrator')) {
-            return view('boards.superadministratorIndex');
-        } elseif (Auth::user()->hasRole('administrator')) {
-            return view('boards.administratorIndex');
-        } else {
-            return view('boards.userIndex');
-        }
     }
 
     /**
@@ -48,13 +41,12 @@ class BoardsController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         //
-
-        return view('boards.show');
     }
 
     /**

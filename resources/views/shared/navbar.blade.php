@@ -47,6 +47,10 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    {!! link_to('manager/pages', 'Manager Area', ['class' => 'nav-link']) !!}
+                </li>
+
             </ul>
 
         </div>

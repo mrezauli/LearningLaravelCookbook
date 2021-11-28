@@ -7,31 +7,31 @@
         <div class="list-group-item">
             <div class="row-content">
                 <h5><i class="far fa-grin-tongue mb-3"></i> Manage User</h5>
-                <a href="/admin/users" class="btn btn-warning">All Users</a>
+                {!! link_to('admin/users', 'All Users', ['class' => 'btn btn-warning']) !!}
             </div>
         </div>
         <div class="list-group-separator"></div>
         <div class="list-group-item">
             <div class="row-content">
                 <h5><i class="fa fa-users mb-3"></i> Manage Roles</h5>
-                <a href="/admin/roles" class="btn btn-info">All Roles</a>
-                <a href="/admin/roles/create" class="btn btn-success">Create A Role</a>
+                {!! link_to('manager/roles', 'All Roles', ['class' => 'btn btn-info']) !!}
+                {!! link_to('manager/roles/create', 'Create A Role', ['class' => 'btn btn-success']) !!}
             </div>
         </div>
         <div class="list-group-separator"></div>
         <div class="list-group-item">
             <div class="row-content">
                 <h5><i class="fas fa-file-signature mb-3"></i> Manage Posts</h5>
-                <a href="/admin/posts" class="btn btn-info">All Posts</a>
-                <a href="/admin/posts/create" class="btn btn-success">Create A Post</a>
+                {!! link_to('manager/posts', 'All Posts', ['class' => 'btn btn-info']) !!}
+                {!! link_to('manager/posts/create', 'Create A Post', ['class' => 'btn btn-success']) !!}
             </div>
         </div>
         <div class="list-group-separator"></div>
         <div class="list-group-item">
             <div class="row-content">
                 <h5><i class="fas fa-cogs"></i> Manage Categories</h5>
-                <a href="/admin/categories" class="btn btn-info">All Categories</a>
-                <a href="/admin/categories/create" class="btn btn-success">New Category</a>
+                {!! link_to('manager/categories', 'All Categories', ['class' => 'btn btn-info']) !!}
+                {!! link_to('manager/categories/create', 'New Category', ['class' => 'btn btn-success']) !!}
             </div>
         </div>
         <div class="list-group-separator"></div>

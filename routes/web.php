@@ -25,7 +25,7 @@ Route::get('welcome', 'App\Http\Controllers\WelcomesController@index');
 Route::resource('tickets', \App\Http\Controllers\TicketsController::class);
 Route::resource('comments', \App\Http\Controllers\CommentsController::class);
 
-//route get with laravel breeze
+//route from laravel breeze
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

@@ -26,8 +26,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://learninglaravelcookbook.test/about">About</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://learninglaravelcookbook.test/welcome">Welcome</a>
+                </li>
 
-                <!-- Dropdown -->
+                <!-- Dropdown Tickets-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-mdb-toggle="dropdown" aria-expanded="false">
@@ -47,6 +50,92 @@
                     </ul>
                 </li>
 
+                <!-- Dropdown Users-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Users
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            {!! link_to_route('users.create', 'Create', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            {!! link_to_route('users.index', 'Index', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown Posts-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Posts
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            {!! link_to_route('posts.create', 'Create', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            {!! link_to_route('posts.index', 'Index', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown Managers-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Managers
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            {!! link_to_route('managers.create', 'Create', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            {!! link_to_route('managers.index', 'Index', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown Pages-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Pages
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            {!! link_to_route('pages.create', 'Create', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            {!! link_to_route('pages.index', 'Index', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    {!! link_to('dashboard', 'Dashboard', ['class' => 'nav-link']) !!}
+                </li>
+                <li class="nav-item">
+                    {!! link_to('boards.show', 'Show Board', ['class' => 'nav-link']) !!}
+                </li>
                 <li class="nav-item">
                     {!! link_to('manager/pages', 'Manager Area', ['class' => 'nav-link']) !!}
                 </li>

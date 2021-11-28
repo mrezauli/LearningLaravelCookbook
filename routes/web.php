@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'auth'], function () {
     Route::resource('users', UsersController::class);
+    Route::resource('posts', PostsController::class);
 });
 
 Route::group(['prefix' => 'manager', 'middleware' => ['manager', 'auth']], function () {

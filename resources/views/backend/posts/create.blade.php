@@ -9,7 +9,7 @@
         @include('shared.successAlert')
         <div class="card-header">Create post</div>
         <div class="card-body">
-            <h5 class="card-title">your voice to us</h5>
+            <h5 class="card-title">What's in your mind?</h5>
 
             {!! Form::model($posts = null, ['route' => 'posts.store']) !!}
 

@@ -130,6 +130,26 @@
                     </ul>
                 </li>
 
+                <!-- Dropdown Categories-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            {!! link_to_route('categories.create', 'Create', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            {!! link_to_route('categories.index', 'Index', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     {!! link_to('dashboard', 'Dashboard', ['class' => 'nav-link']) !!}
                 </li>

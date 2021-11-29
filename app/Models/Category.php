@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guraded = ['id'];
 
-    public function categories()
+    public function posts()
     {
-        return $this->belongsToMany('App\Category')->withTimestamps();
+        return $this->belongsToMany('App\Post')->withTimestamps();
     }
 }

@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 
 });
 
 Route::group(['prefix' => 'manager', 'middleware' => ['manager', 'auth']], function () {
-    Route::resource('managers', \App\Http\Controllers\Manager\ManagersController::class);
+    Route::resource('managers', App\Http\Controllers\Manager\ManagersController::class);
     Route::resource('pages', App\Http\Controllers\Manager\PagesController::class);
 });
 

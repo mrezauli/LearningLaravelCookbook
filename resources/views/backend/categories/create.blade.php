@@ -15,8 +15,8 @@
 
             <!-- Title input -->
             <div class="form-outline mb-4">
-                {!! Form::text('title', '', ['class' => 'form-control', 'id' => 'title.category', 'required']) !!}
-                {!! Form::label('title.category', 'Title', ['class' => 'form-label']) !!}
+                {!! Form::text('name', '', ['class' => 'form-control', 'id' => 'title.category', 'required']) !!}
+                {!! Form::label('name.category', 'Title', ['class' => 'form-label']) !!}
             </div>
 
             <button class="btn btn-danger" type="reset">RESET</button>

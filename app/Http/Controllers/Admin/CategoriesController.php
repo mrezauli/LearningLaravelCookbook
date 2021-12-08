@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateCategoryRequest;
 
 class CategoriesController extends Controller
 {
@@ -15,6 +17,8 @@ class CategoriesController extends Controller
     public function index()
     {
         //
+        $categories = Category::all();
+        return view('backend.categories.index')->with('categories', $categories);
     }
 
     /**
@@ -31,12 +35,21 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CreateCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
         //
+        $slug = uniqid();
+        $category = new Category([
+            'name' => $request->get('name'),
+            'slug' => $slug,
+        ]);
+
+        $category->save();
+
+        return redirect('admin/categories/create')->with('success', 'Category has been created! Its slug is: ' . $slug);
     }
 
     /**

@@ -25,6 +25,12 @@
                 {!! Form::textarea('content', '', ['class' => 'form-control', 'id' => 'content.post', 'rows' => '4', 'required']) !!}
                 {!! Form::label('content.post', 'Content', ['class' => 'form-label']) !!}
             </div>
+
+            <!-- Category input -->
+            <div class="form-outline mb-4">
+                {!! Form::select('category_id', $categoriesOptions, null, ['id' => 'category.post', 'placeholder' => 'Choose Category', 'class' => 'form-select form-select-lg mb-3', 'aria-label' =>'.form-select-lg example']) !!}
+            </div>
+
             <button class="btn btn-danger" type="reset">RESET</button>
             {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}

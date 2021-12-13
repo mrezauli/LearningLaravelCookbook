@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
@@ -26,7 +27,14 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('backend.posts.create');
+        $categories = Category::all();
+        $category_names = $categories->pluck('name');
+        $category_ids = $categories->pluck('id');
+
+        foreach ($category_ids as $key => $value) {
+            $categoriesOptions[$value] = $category_names[$key];
+        }
+        return view('backend.posts.create')->with('categoriesOptions', $categoriesOptions);
     }
 
     /**

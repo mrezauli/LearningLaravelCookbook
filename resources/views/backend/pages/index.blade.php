@@ -22,16 +22,16 @@
         <div class="list-group-item">
             <div class="row-content">
                 <h5><i class="fas fa-file-signature mb-3"></i> Manage Posts</h5>
-                {!! link_to('manager/posts', 'All Posts', ['class' => 'btn btn-info']) !!}
-                {!! link_to('manager/posts/create', 'Create A Post', ['class' => 'btn btn-success']) !!}
+                {!! link_to('admin/posts', 'All Posts', ['class' => 'btn btn-info']) !!}
+                {!! link_to('admin/posts/create', 'Create A Post', ['class' => 'btn btn-success']) !!}
             </div>
         </div>
         <div class="list-group-separator"></div>
         <div class="list-group-item">
             <div class="row-content">
                 <h5><i class="fas fa-cogs"></i> Manage Categories</h5>
-                {!! link_to('manager/categories', 'All Categories', ['class' => 'btn btn-info']) !!}
-                {!! link_to('manager/categories/create', 'New Category', ['class' => 'btn btn-success']) !!}
+                {!! link_to('admin/categories', 'All Categories', ['class' => 'btn btn-info']) !!}
+                {!! link_to('admin/categories/create', 'New Category', ['class' => 'btn btn-success']) !!}
             </div>
         </div>
         <div class="list-group-separator"></div>

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePostRequest;
 
 class PostsController extends Controller
 {
@@ -43,9 +46,20 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         //
+        $slug = Str::slug($request->get('title'), '-');
+        $post = new Post([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'slug' => $slug,
+        ]);
+
+        $post->save();
+        $post->categories()->sync($request->get('category_ids'));
+
+        return redirect('admin/posts/create')->with('status', 'The post' . $slug . ' has been created!');
     }
 
     /**

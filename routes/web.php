@@ -24,6 +24,7 @@ Route::get('welcome', 'App\Http\Controllers\WelcomesController@index');
 
 Route::resource('tickets', \App\Http\Controllers\TicketsController::class);
 Route::resource('comments', \App\Http\Controllers\CommentsController::class);
+Route::resource('blogs', \App\Http\Controllers\BlogsController::class);
 
 //route from laravel breeze
 // Route::get('/dashboard', function () {

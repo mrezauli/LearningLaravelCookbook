@@ -28,7 +28,7 @@
 
             <!-- Category input -->
             <div class="form-outline mb-4">
-                {!! Form::select('category_ids', $categoriesOptions, null, ['id' => 'category.post', 'placeholder' => 'Choose Category', 'class' => 'form-select form-select-lg mb-3', 'aria-label' =>'.form-select-lg example', 'multiple' => true]) !!}
+                {!! Form::select('category_ids[]', $categoriesOptions, null, ['id' => 'category.post', 'placeholder' => 'Choose Category', 'class' => 'form-select form-select-lg mb-3', 'aria-label' =>'.form-select-lg example', 'multiple' => true]) !!}
             </div>
 
             <button class="btn btn-danger" type="reset">RESET</button>

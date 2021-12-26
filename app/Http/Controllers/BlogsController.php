@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WelcomesController extends Controller
+class BlogsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class WelcomesController extends Controller
     public function index()
     {
         //
-
-        return view('welcome.index');
+        $posts = Post::all();
+        return view('blogs.index')->with('posts', $posts);
     }
 
     /**

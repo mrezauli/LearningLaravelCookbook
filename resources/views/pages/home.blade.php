@@ -13,6 +13,7 @@
         </div>
         <div class="card-header">Featured Page</div>
         <div class="card-body">
+            <h3 class="card-title">{{ trans('main.subtitle') }}</h3>
             <h5 class="card-title">Home</h5>
             <p class="card-text">
                 Home! Sweet Home!

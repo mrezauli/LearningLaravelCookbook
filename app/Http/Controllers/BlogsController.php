@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -48,6 +49,11 @@ class BlogsController extends Controller
     public function show($id)
     {
         //
+        $post = Post::whereId($id)->firstOrFail();
+        $comments = $post->comments()->get();
+        //dd($post);
+        //dd($comments);
+        return view('blogs.show')->with('post', $post)->with('comments', $comments);
     }
 
     /**

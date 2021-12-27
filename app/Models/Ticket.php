@@ -22,8 +22,16 @@ class Ticket extends Model
         return $this->title;
     }
 
+    // public function comments()
+    // {
+    //     return $this->hasMany('App\Models\Comment', 'post_id');
+    // }
+
+    /**
+     * Get all of the ticket's comments.
+     */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment', 'post_id');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

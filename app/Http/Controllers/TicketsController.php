@@ -53,14 +53,14 @@ class TicketsController extends Controller
         ]);
         $ticket->save();
 
-        $data = [
-            'ticketsSlug' => $slug
-        ];
-        Mail::send('mails.ticket', $data, function ($message) {
-            $message->from('rezaul.nactar@gmail.com', 'MD. Rezaul Islam');
-            $message->to('rezaul.cse.mbstu@gmail.com', 'MD. Rezaul Islam');
-            $message->subject('Submission of a ticket!');
-        });
+        // $data = [
+        //     'ticketsSlug' => $slug
+        // ];
+        // Mail::send('mails.ticket', $data, function ($message) {
+        //     $message->from('rezaul.nactar@gmail.com', 'MD. Rezaul Islam');
+        //     $message->to('rezaul.cse.mbstu@gmail.com', 'MD. Rezaul Islam');
+        //     $message->subject('Submission of a ticket!');
+        // });
 
         return redirect('tickets/create')->with('success', 'Tickets has been created! Its slug is: ' . $slug);
     }

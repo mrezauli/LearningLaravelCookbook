@@ -40,7 +40,7 @@
                                     </th>
                                     <th scope="row">{{ $user->id }}</th>
                                     <td>
-                                    {!! link_to_route('users.show', $user->name, [$user->slug]) !!}</td>
+                                    {!! link_to_route('users.show', $user->name, [$user->slug ? $user->slug : '']) !!}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
                                 </tr>

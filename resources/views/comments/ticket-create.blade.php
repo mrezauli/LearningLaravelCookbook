@@ -6,11 +6,13 @@
 
         {!! Form::model($comments = null, ['route' => 'comments.store']) !!}
 
-        {!! Form::hidden('post_id', $ticket->id) !!}
+
+        {!! Form::hidden('commentable_id', $ticket->id) !!}
+        {!! Form::hidden('commentable_type', 'App\Models\Ticket') !!}
 
         <!-- Content input -->
         <div class="form-outline mb-4">
-            {!! Form::textarea('content', '', ['class' => 'form-control', 'id' => 'content.comment', 'rows' => '4', 'required']) !!}
+            {!! Form::textarea('content', '', ['class' => 'form-control', 'id' => 'content.comment', 'rows' => '5', 'required']) !!}
             {!! Form::label('content.comment', 'Content', ['class' => 'form-label']) !!}
         </div>
         <button class="btn btn-danger" type="reset">RESET</button>

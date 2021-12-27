@@ -90,6 +90,23 @@
                     </ul>
                 </li>
 
+                <!-- Dropdown Blogs-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Blogs
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            {!! link_to_route('blogs.index', 'Index', [], ['class' => 'dropdown-item']) !!}
+                        </li>
+                    </ul>
+                </li>
+
                 <!-- Dropdown Managers-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

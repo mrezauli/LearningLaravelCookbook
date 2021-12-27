@@ -12,8 +12,16 @@ class Comment extends Model
 
     protected $guarded = ['id'];
 
-    public function ticket()
+    // public function ticket()
+    // {
+    //     return $this->belongsTo('App\Models\Ticket');
+    // }
+
+    /**
+     * Get the parent commentable model (post or ticket).
+     */
+    public function commentable()
     {
-        return $this->belongsTo('App\Models\Ticket');
+        return $this->morphTo();
     }
 }

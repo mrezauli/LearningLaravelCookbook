@@ -20,6 +20,6 @@
     </div>
 
     @include('comments.show')
-    @include('comments.create')
+    @include('comments.ticket-create')
 
 @endsection

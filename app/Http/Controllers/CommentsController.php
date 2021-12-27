@@ -40,7 +40,8 @@ class CommentsController extends Controller
         //
 
         $comment = new Comment([
-            'post_id' => $request->get('post_id'),
+            'commentable_id' => $request->get('commentable_id'),
+            'commentable_type' => $request->get('commentable_type'),
             'content' => $request->get('content'),
             'user_id' => 1
         ]);

@@ -54,4 +54,7 @@ Route::group(['prefix' => 'manager', 'middleware' => ['manager', 'auth']], funct
     Route::resource('pages', App\Http\Controllers\Manager\PagesController::class);
 });
 
+Route::get('login/facebook', 'Auth\SocialitesController@redirectToFacebook');
+Route::get('login/facebook/callback', 'Auth\SocialitesController@getFacebookCallback');
+
 require __DIR__ . '/auth.php';

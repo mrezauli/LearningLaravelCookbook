@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait, SoftDeletes;
+    use LaratrustUserTrait, SoftDeletes, Userstamps;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

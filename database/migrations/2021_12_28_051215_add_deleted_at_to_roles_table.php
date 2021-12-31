@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserstampsToRolesTable extends Migration
+class AddDeletedAtToRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,7 @@ class AddUserstampsToRolesTable extends Migration
     {
         Schema::table('roles', function (Blueprint $table) {
             //
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('updated_by')->nullable();
-            $table->foreignId('deleted_by')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
@@ -30,9 +28,7 @@ class AddUserstampsToRolesTable extends Migration
     {
         Schema::table('roles', function (Blueprint $table) {
             //
-            $table->dropIfExists('created_by');
-            $table->dropIfExists('updated_by');
-            $table->dropIfExists('deleted_by');
+            $table->dropIfExists('deleted_at');
         });
     }
 }

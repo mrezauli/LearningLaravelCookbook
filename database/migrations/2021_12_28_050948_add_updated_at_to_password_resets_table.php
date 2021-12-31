@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserstampsToPasswordResetsTable extends Migration
+class AddUpdatedAtToPasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,7 @@ class AddUserstampsToPasswordResetsTable extends Migration
     {
         Schema::table('password_resets', function (Blueprint $table) {
             //
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('updated_by')->nullable();
-            $table->foreignId('deleted_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
@@ -30,9 +28,7 @@ class AddUserstampsToPasswordResetsTable extends Migration
     {
         Schema::table('password_resets', function (Blueprint $table) {
             //
-            $table->dropIfExists('created_by');
-            $table->dropIfExists('updated_by');
-            $table->dropIfExists('deleted_by');
+            $table->dropIfExists('updated_at');
         });
     }
 }

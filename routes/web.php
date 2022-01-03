@@ -54,7 +54,25 @@ Route::group(['prefix' => 'manager', 'middleware' => ['manager', 'auth']], funct
     Route::resource('pages', App\Http\Controllers\Manager\PagesController::class);
 });
 
-Route::get('login/facebook', 'Auth\SocialitesController@redirectToFacebook');
-Route::get('login/facebook/callback', 'Auth\SocialitesController@getFacebookCallback');
+Route::get('login/facebook', 'App\Http\Controllers\Auth\SocialitesController@redirectToFacebook');
+Route::get('login/facebook/callback', 'App\Http\Controllers\Auth\SocialitesController@getFacebookCallback');
+
+Route::get('login/twitter', 'App\Http\Controllers\Auth\SocialitesController@redirectToTwitter');
+Route::get('login/twitter/callback', 'App\Http\Controllers\Auth\SocialitesController@getTwitterCallback');
+
+Route::get('login/linkedin', 'App\Http\Controllers\Auth\SocialitesController@redirectToLinkedin');
+Route::get('login/linkedin/callback', 'App\Http\Controllers\Auth\SocialitesController@getLinkedinCallback');
+
+Route::get('login/google', 'App\Http\Controllers\Auth\SocialitesController@redirectToGoogle');
+Route::get('login/google/callback', 'App\Http\Controllers\Auth\SocialitesController@getGoogleCallback');
+
+Route::get('login/github', 'App\Http\Controllers\Auth\SocialitesController@redirectToGithub');
+Route::get('login/github/callback', 'App\Http\Controllers\Auth\SocialitesController@getGithubCallback');
+
+Route::get('login/gitlab', 'App\Http\Controllers\Auth\SocialitesController@redirectToGitlab');
+Route::get('login/gitlab/callback', 'App\Http\Controllers\Auth\SocialitesController@getGitlabCallback');
+
+Route::get('login/bitbucket', 'App\Http\Controllers\Auth\SocialitesController@redirectToBitbucket');
+Route::get('login/bitbucket/callback', 'App\Http\Controllers\Auth\SocialitesController@getBitbucketCallback');
 
 require __DIR__ . '/auth.php';

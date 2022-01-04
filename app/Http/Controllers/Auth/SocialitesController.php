@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -21,34 +22,32 @@ class SocialitesController extends Controller
     public function getFacebookCallback()
     {
         # code...
-        $data = Socialite::with('facebook')->user();
-        $user = User::where('email', $data->email)->first();
-
-        if (!is_null($user)) {
-            # code...
-            Auth::login($user);
-            $user->name = $data->user['name'];
-            $user->facebook_id = $data->id;
-            $user->save();
-        } else {
-            # code...
-            $user = User::where('facebook_id', $data->id)->first();
-            if (is_null($user)) {
+        try {
+            //code...
+            $user = Socialite::with('facebook')->user();
+            $userExist = User::where('facebook_id', $user->id)->first();
+            if ($userExist) {
+                # code...
+                Auth::login($userExist);
+            } else {
                 # code...
                 //Create a new user
-                $user = new User();
-                $user->name = $data->user['name'];
-                $user->password = Hash::make('password');
-                $user->slug = uniqid();
-                $user->email = $data->email;
-                $user->facebook_id = $data->id;
-                $user->save();
+                $newUser = new User();
+                $newUser->name = $user->getName();
+                $newUser->password = Hash::make('password');
+                $newUser->slug = uniqid();
+                $newUser->email = $user->getEmail();
+                $newUser->facebook_id = $user->getId();
+                $newUser->save();
+
+                Auth::login($newUser);
             }
 
-            Auth::login($user);
+            return redirect('/home');
+        } catch (Exception $e) {
+            //throw $th;
+            dd($e->getMessage());
         }
-
-        return redirect('/home')->with('success', 'Successfully logged in!');
     }
 
     public function redirectToTwitter()
@@ -60,34 +59,36 @@ class SocialitesController extends Controller
     public function getTwitterCallback()
     {
         # code...
-        $data = Socialite::with('twitter')->user();
-        $user = User::where('email', $data->email)->first();
-
-        if (!is_null($user)) {
-            # code...
-            Auth::login($user);
-            $user->name = $data->getName();
-            $user->twitter_id = $data->id;
-            $user->save();
-        } else {
-            # code...
-            $user = User::where('twitter_id', $data->id)->first();
-            if (is_null($user)) {
+        try {
+            //code...
+            $user = Socialite::with('twitter')->user();
+            $userExist = User::where('twitter_id', $user->id)->first();
+            if ($userExist) {
+                # code...
+                Auth::login($userExist);
+            } else {
                 # code...
                 //Create a new user
-                $user = new User();
-                $user->name = $data->getName();
-                $user->password = Hash::make('password');
-                $user->slug = uniqid();
-                $user->email = $data->email;
-                $user->twitter_id = $data->id;
-                $user->save();
+                $newUser = new User();
+                $newUser->name = $user->getName();
+                $newUser->password = Hash::make('password');
+                $newUser->slug = uniqid();
+                if ($user->getEmail()) {
+                    $newUser->email = $user->getEmail();
+                } else {
+                    $newUser->email = 'example@example.com';
+                }
+                $newUser->twitter_id = $user->getId();
+                $newUser->save();
+
+                Auth::login($newUser);
             }
 
-            Auth::login($user);
+            return redirect('/home');
+        } catch (Exception $e) {
+            //throw $th;
+            dd($e->getMessage());
         }
-
-        return redirect('/home')->with('success', 'Successfully logged in!');
     }
 
     public function redirectToLinkedin()
